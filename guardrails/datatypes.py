@@ -404,6 +404,8 @@ class List(NonScalarType):
 
         if len(self._children) == 0:
             return validation
+        if not value:
+            return validation
 
         item_type = list(self._children.values())[0]
 
@@ -443,6 +445,8 @@ class Object(NonScalarType):
         validation = self._constructor_validation(key, value)
 
         if len(self._children) == 0:
+            return validation
+        if not value:
             return validation
 
         # Types of supported children
